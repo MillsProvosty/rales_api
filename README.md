@@ -1,4 +1,7 @@
 # RalesApi
+![Image of Schema]
+(https://ondras.zarovi.cz/sql/demo/)
+
 
 Rales_api bla bla bla, we'll get to this soon.
 
