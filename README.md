@@ -1,7 +1,7 @@
 # RalesApi
 
 Schema:
-![Schema](/app/assets/config/images/schema.png)
+![Schema](./images/schema.png)
 
 ### Dependencies
 
