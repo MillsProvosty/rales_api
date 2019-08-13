@@ -1,6 +1,7 @@
 # RalesApi
 
 Rales_api bla bla bla, we'll get to this soon.
+
 ### Dependencies
 
 - Ruby 2.4
@@ -13,7 +14,7 @@ Rales_api bla bla bla, we'll get to this soon.
 gem install bundler
 bundle install
 rails db:{create,migrate}
-rake import:
+rake import:data
 ```
 
 ### Gems Added
