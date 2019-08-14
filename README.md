@@ -3,7 +3,8 @@
 (https://ondras.zarovi.cz/sql/demo/)
 
 
-Rales_api bla bla bla, we'll get to this soon.
+Schema:
+![Schema](./images/schema.png)
 
 ### Dependencies
 
