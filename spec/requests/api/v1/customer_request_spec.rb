@@ -23,7 +23,7 @@ describe "Customer API" do
     customers = JSON.parse(response.body)
 
     expect(customers.count).to eq(8)
-    expect(customers.first["name"]).to be_kind_of(String)
+    expect(customers.first["first_name"]).to be_kind_of(String)
     expect(customers.first["created_at"]).to be_kind_of(String)
     expect(customers.first["id"]).to be_kind_of(Integer)
   end
@@ -34,11 +34,11 @@ describe "Customer API" do
 
     expect(response).to be_successful
 
-    merchant = JSON.parse(response.body)
+    customer = JSON.parse(response.body)
 
-    expect(merchant["id"]).to eq(@id)
-    expect(merchant["name"]).to be_kind_of(String)
-    expect(merchant["created_at"]).to be_kind_of(String)
-    expect(merchant["id"]).to be_kind_of(Integer)
+    expect(customer["id"]).to eq(@id)
+    expect(customer["first_name"]).to be_kind_of(String)
+    expect(customer["created_at"]).to be_kind_of(String)
+    expect(customer["id"]).to be_kind_of(Integer)
   end
 end
