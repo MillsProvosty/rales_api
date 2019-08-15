@@ -38,7 +38,7 @@ RSpec.describe Merchant, type: :model do
       @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
       @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
 
-    
+    #come back to this later to complete
 
 
     end
