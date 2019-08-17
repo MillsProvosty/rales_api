@@ -39,7 +39,7 @@ describe "Invoice Items Search Controller" do
   end
 
   it "returns all invoice_items" do
-    get "/api/v1/invoice_items/find_all?name=#{@name2}"
+    get "/api/v1/invoice_items/find_all?quantity=1"
     expect(response).to have_http_status(:success)
 
     invoice_items = JSON.parse(response.body)
