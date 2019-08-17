@@ -41,4 +41,16 @@ describe "Merchant API" do
     expect(merchant["created_at"]).to be_kind_of(String)
     expect(merchant["id"]).to be_kind_of(Integer)
   end
+
+  it "can find a random merchant" do
+    get "/api/v1/merchants/random"
+    expect(response).to be_successful
+
+    random = JSON.parse(response.body)
+
+    expect(random["data"]).to be_kind_of(Hash)
+    expect(random["data"]["attributes"]).to be_present
+    expect(random.count).to eq(1)
+    expect(random["data"]["attributes"]["id"]).to be_kind_of(Integer)
+  end
 end
