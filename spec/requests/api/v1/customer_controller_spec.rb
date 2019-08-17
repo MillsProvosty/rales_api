@@ -42,7 +42,7 @@ describe "Customer API" do
     expect(customer["id"]).to be_kind_of(Integer)
   end
 
-  it "can find a random merchant" do
+  it "can find a random customer" do
     get "/api/v1/customers/random"
     expect(response).to be_successful
 
