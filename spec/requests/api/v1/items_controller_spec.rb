@@ -23,10 +23,10 @@ describe "Items API" do
 
     items = JSON.parse(response.body)
 
-    expect(items.count).to eq(8)
-    expect(items.first["description"]).to be_kind_of(String)
-    expect(items.first["created_at"]).to be_kind_of(String)
-    expect(items.first["id"]).to be_kind_of(Integer)
+    expect(items["data"].count).to eq(8)
+    expect(items["data"].first["attributes"]["description"]).to be_kind_of(String)
+    expect(items["data"].first["attributes"]["merchant_id"]).to eq(@merch.id)
+    expect(items["data"].first["attributes"]["id"]).to be_kind_of(Integer)
   end
 
   it "returns index of items" do
@@ -37,10 +37,10 @@ describe "Items API" do
 
     item = JSON.parse(response.body)
 
-    expect(item["id"]).to eq(@id)
-    expect(item["description"]).to be_kind_of(String)
-    expect(item["created_at"]).to be_kind_of(String)
-    expect(item["id"]).to be_kind_of(Integer)
+    expect(item["data"]["attributes"]["id"]).to eq(@id)
+    expect(item["data"]["attributes"]["description"]).to be_kind_of(String)
+    expect(item["data"]["attributes"]["merchant_id"]).to be_kind_of(Integer)
+    expect(item["data"]["attributes"]["id"]).to be_kind_of(Integer)
   end
 
   it "can find a random invoice item" do
