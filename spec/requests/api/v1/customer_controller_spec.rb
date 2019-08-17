@@ -22,10 +22,11 @@ describe "Customer API" do
 
     customers = JSON.parse(response.body)
 
-    expect(customers.count).to eq(8)
-    expect(customers.first["first_name"]).to be_kind_of(String)
-    expect(customers.first["created_at"]).to be_kind_of(String)
-    expect(customers.first["id"]).to be_kind_of(Integer)
+    expect(customers["data"].count).to eq(8)
+    expect(customers["data"].first["attributes"]["first_name"]).to be_kind_of(String)
+    expect(customers["data"].first["attributes"]["last_name"]).to eq(@cust1.last_name)
+    expect(customers["data"].first["attributes"]["id"]).to be_kind_of(Integer)
+    expect(customers["data"].first["id"].to_i).to eq(@id)
   end
 
   it "returns index of customers" do
@@ -36,10 +37,10 @@ describe "Customer API" do
 
     customer = JSON.parse(response.body)
 
-    expect(customer["id"]).to eq(@id)
-    expect(customer["first_name"]).to be_kind_of(String)
-    expect(customer["created_at"]).to be_kind_of(String)
-    expect(customer["id"]).to be_kind_of(Integer)
+    expect(customer["data"]["id"].to_i).to eq(@id)
+    expect(customer["data"]["attributes"]["first_name"]).to be_kind_of(String)
+    expect(customer["data"]["attributes"]["last_name"]).to be_kind_of(String)
+    expect(customer["data"]["attributes"]["id"]).to be_kind_of(Integer)
   end
 
   it "can find a random customer" do
