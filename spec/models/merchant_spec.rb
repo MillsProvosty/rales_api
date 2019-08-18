@@ -56,5 +56,10 @@ RSpec.describe Merchant, type: :model do
       expect(Merchant.total_revenue(quantity)).to eq([@merch1, @merch2, @merch3])
     end
 
+    it ".total_items_sold(quantity)" do
+       quantity = 3
+       expect(Merchant.total_items_sold(quantity)).to eq([@merch1, @merch2, @merch3])
+    end
+
   end
 end
