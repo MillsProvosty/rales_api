@@ -1,16 +1,21 @@
 require 'rails_helper'
 
-describe "Merchant Items Controllers" do
+describe "Merchant Invoices Controllers" do
   before :each do
     @merch1 = create(:merchant, name: "Merch 1")
     @merch2 = create(:merchant, name: "Merch 2")
 
-    @item1 = create(:item, merchant: @merch1)
-    @item2 = create(:item, merchant: @merch1)
-    @item3 = create(:item, merchant: @merch1)
-    @item4 = create(:item, merchant: @merch2)
-    @item5 = create(:item, merchant: @merch2)
-    @item6 = create(:item, merchant: @merch2)
+    @cust1 = create(:customer)
+    @cust2 = create(:customer)
+
+    @invoice1 = create(:invoice, merchant: @merch1, customer: @cust1)
+    @invoice2 = create(:invoice, merchant: @merch1, customer: @cust1)
+    @invoice3 = create(:invoice, merchant: @merch1, customer: @cust2)
+    @invoice4 = create(:invoice, merchant: @merch1, customer: @cust2)
+    @invoice5 = create(:invoice, merchant: @merch2, customer: @cust1)
+    @invoice6 = create(:invoice, merchant: @merch2, customer: @cust1)
+    @invoice6 = create(:invoice, merchant: @merch2, customer: @cust2)
+    @invoice6 = create(:invoice, merchant: @merch2, customer: @cust2)
 
     @id = @merch1.id
   end
