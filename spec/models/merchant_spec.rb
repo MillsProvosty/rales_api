@@ -13,9 +13,6 @@ RSpec.describe Merchant, type: :model do
       @merch2 = create(:merchant)
       @merch3 = create(:merchant)
       @merch4 = create(:merchant)
-      @merch5 = create(:merchant)
-      @merch6 = create(:merchant)
-      @merch7 = create(:merchant)
 
       @cust1 = create(:customer)
       @cust2 = create(:customer)
@@ -44,20 +41,21 @@ RSpec.describe Merchant, type: :model do
       @invitems = create(:invoice_item, invoice: @inv1, item: @item3)
       @invitems = create(:invoice_item, invoice: @inv1, item: @item3)
 
-      @tran1 = create(:transaction, invoice: @inv1)
-      @tran2 = create(:transaction, invoice: @inv2)
-      @tran3 = create(:transaction, invoice: @inv3)
-      @tran4 = create(:transaction, invoice: @inv4)
-      @tran5 = create(:transaction, invoice: @inv5)
+      @tran1 = create(:transaction, invoice: @inv1, result: "success")
+      @tran2 = create(:transaction, invoice: @inv2, result: "success")
+      @tran3 = create(:transaction, invoice: @inv3, result: "success")
+      @tran4 = create(:transaction, invoice: @inv4, result: "success")
+      @tran5 = create(:transaction, invoice: @inv5, result: "success")
     end
 
-    it ".total_revenue(quanity)" do
+    it ".most_revenue(quanity)" do
       quantity = 3
       expect(Merchant.total_revenue(quantity)).to eq([@merch1, @merch2, @merch3])
     end
 
-    it ".total_items_sold(quantity)" do
+    it ".most_items(quantity)" do
        quantity = 3
+       binding.pry
        expect(Merchant.total_items_sold(quantity)).to eq([@merch1, @merch2, @merch3])
     end
 
