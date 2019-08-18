@@ -14,22 +14,22 @@ describe "Merchant Invoices Controllers" do
     @invoice4 = create(:invoice, merchant: @merch1, customer: @cust2)
     @invoice5 = create(:invoice, merchant: @merch2, customer: @cust1)
     @invoice6 = create(:invoice, merchant: @merch2, customer: @cust1)
-    @invoice6 = create(:invoice, merchant: @merch2, customer: @cust2)
-    @invoice6 = create(:invoice, merchant: @merch2, customer: @cust2)
+    @invoice7 = create(:invoice, merchant: @merch2, customer: @cust2)
+    @invoice8 = create(:invoice, merchant: @merch2, customer: @cust2)
 
     @id = @merch1.id
   end
 
-  it "returns a single merchants items" do
-    get "/api/v1/merchants/#{@id}/items"
+  it "returns a single merchants invoices" do
+    get "/api/v1/merchants/#{@id}/invoices"
     expect(response).to have_http_status(:success)
 
-    items = JSON.parse(response.body)
+    invoices = JSON.parse(response.body)
 
-    expect(items["data"].count).to eq(3)
-    expect(items["data"].first).to be_kind_of(Hash)
-    expect(items["data"].first["attributes"]["merchant_id"]).to eq(@id)
-    expect(items["data"].first["attributes"]["merchant_id"]).to_not eq(@merch2.id)
-    expect(items["data"].first["attributes"]["id"]).to eq(@item1.id)
+    expect(invoices["data"].count).to eq(4)
+    expect(invoices["data"].first).to be_kind_of(Hash)
+    expect(invoices["data"].first["attributes"]["merchant_id"]).to eq(@id)
+    expect(invoices["data"].first["attributes"]["merchant_id"]).to_not eq(@merch2.id)
+    expect(invoices["data"].first["attributes"]["id"]).to eq(@invoice1.id)
   end
 end
