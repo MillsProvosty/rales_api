@@ -52,8 +52,11 @@ Rails.application.routes.draw do
 
       end
 
-      resources :invoices, only: [:index, :show] do
-
+      resources :invoices, only: [:index, :show], module: :invoices do
+        resources :transactions, only: [:index]
+        resources :invoice_items, only: [:index]
+        resources :items, only: [:index]
+        resources :merchants, only: [:index]
       end
 
       resources :invoice_items, only: [:index, :show] do
