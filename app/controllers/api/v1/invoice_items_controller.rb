@@ -1,9 +1,14 @@
 class Api::V1::InvoiceItemsController < ApplicationController
   def index
-    render json: InvoiceItem.all
+    render json: InvoiceItemSerializer.new(InvoiceItem.all)
   end
 
   def show
-    render json: InvoiceItem.find(params[:id])
+    render json: InvoiceItemSerializer.new(InvoiceItem.find(search_params[:id]))
   end
+
+  private
+    def search_params
+      params.permit(:id)
+    end
 end

@@ -22,10 +22,10 @@ describe "Merchant API" do
 
     merchants = JSON.parse(response.body)
 
-    expect(merchants.count).to eq(8)
-    expect(merchants.first["name"]).to be_kind_of(String)
-    expect(merchants.first["created_at"]).to be_kind_of(String)
-    expect(merchants.first["id"]).to be_kind_of(Integer)
+    expect(merchants["data"].count).to eq(8)
+    expect(merchants["data"].first["attributes"]["name"]).to be_kind_of(String)
+    expect(merchants["data"].first["attributes"]["name"]).to eq(@merch1.name)
+    expect(merchants["data"].first["attributes"]["id"]).to be_kind_of(Integer)
   end
 
   it "returns index of merchants" do
@@ -36,10 +36,9 @@ describe "Merchant API" do
 
     merchant = JSON.parse(response.body)
 
-    expect(merchant["id"]).to eq(@id)
-    expect(merchant["name"]).to be_kind_of(String)
-    expect(merchant["created_at"]).to be_kind_of(String)
-    expect(merchant["id"]).to be_kind_of(Integer)
+    expect(merchant["data"]["attributes"]["id"]).to eq(@id)
+    expect(merchant["data"]["attributes"]["name"]).to be_kind_of(String)
+    expect(merchant["data"]["attributes"]["id"]).to be_kind_of(Integer)
   end
 
   it "can find a random merchant" do

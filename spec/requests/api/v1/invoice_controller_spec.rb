@@ -24,13 +24,13 @@ describe "Invoices API" do
 
     invoices = JSON.parse(response.body)
 
-    expect(invoices.count).to eq(8)
-    expect(invoices.first["status"]).to be_kind_of(String)
-    expect(invoices.first["merchant_id"]).to be_kind_of(Integer)
-    expect(invoices.first["merchant_id"]).to eq(@merch.id)
-    expect(invoices.first["customer_id"]).to be_kind_of(Integer)
-    expect(invoices.first["customer_id"]).to eq(@cust.id)
-    expect(invoices.first["id"]).to be_kind_of(Integer)
+    expect(invoices["data"].count).to eq(8)
+    expect(invoices["data"].first["attributes"]["status"]).to be_kind_of(String)
+    expect(invoices["data"].first["attributes"]["merchant_id"]).to be_kind_of(Integer)
+    expect(invoices["data"].first["attributes"]["merchant_id"]).to eq(@merch.id)
+    expect(invoices["data"].first["attributes"]["customer_id"]).to be_kind_of(Integer)
+    expect(invoices["data"].first["attributes"]["customer_id"]).to eq(@cust.id)
+    expect(invoices["data"].first["attributes"]["id"]).to be_kind_of(Integer)
   end
 
   it "returns index of invoices" do
@@ -41,12 +41,11 @@ describe "Invoices API" do
 
     invoice = JSON.parse(response.body)
 
-    expect(invoice["id"]).to eq(@id)
-    expect(invoice["status"]).to be_kind_of(String)
-    expect(invoice["created_at"]).to be_kind_of(String)
-    expect(invoice["id"]).to be_kind_of(Integer)
-    expect(invoice["merchant_id"]).to eq(@merch.id)
-    expect(invoice["customer_id"]).to eq(@cust.id)
+    expect(invoice["data"]["attributes"]["id"]).to eq(@id)
+    expect(invoice["data"]["attributes"]["status"]).to be_kind_of(String)
+    expect(invoice["data"]["attributes"]["id"]).to be_kind_of(Integer)
+    expect(invoice["data"]["attributes"]["merchant_id"]).to eq(@merch.id)
+    expect(invoice["data"]["attributes"]["customer_id"]).to eq(@cust.id)
   end
 
   it "can find a random invoice" do

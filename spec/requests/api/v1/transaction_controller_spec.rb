@@ -25,11 +25,11 @@ describe "Transaction API" do
 
     transactions = JSON.parse(response.body)
 
-    expect(transactions.count).to eq(8)
-    expect(transactions.first["credit_card_number"]).to be_kind_of(String)
-    expect(transactions.first["result"]).to be_kind_of(String)
-    expect(transactions.first["id"]).to be_kind_of(Integer)
-    expect(transactions.first["id"]).to eq(@id)
+    expect(transactions["data"].count).to eq(8)
+    expect(transactions["data"].first["attributes"]["credit_card_number"]).to be_kind_of(String)
+    expect(transactions["data"].first["attributes"]["result"]).to be_kind_of(String)
+    expect(transactions["data"].first["attributes"]["id"]).to be_kind_of(Integer)
+    expect(transactions["data"].first["attributes"]["id"]).to eq(@id)
   end
 
   it "returns index of transactions" do
@@ -40,10 +40,10 @@ describe "Transaction API" do
 
     transaction = JSON.parse(response.body)
 
-    expect(transaction["id"]).to eq(@id)
-    expect(transaction["credit_card_number"]).to be_kind_of(String)
-    expect(transaction["result"]).to be_kind_of(String)
-    expect(transaction["id"]).to be_kind_of(Integer)
+    expect(transaction["data"]["attributes"]["id"]).to eq(@id)
+    expect(transaction["data"]["attributes"]["credit_card_number"]).to be_kind_of(String)
+    expect(transaction["data"]["attributes"]["result"]).to be_kind_of(String)
+    expect(transaction["data"]["attributes"]["id"]).to be_kind_of(Integer)
   end
 
   it "can find a random merchant" do

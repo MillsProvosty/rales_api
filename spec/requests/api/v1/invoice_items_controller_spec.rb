@@ -28,12 +28,12 @@ describe "Invoice Itmes API" do
 
     invoice_items = JSON.parse(response.body)
 
-    expect(invoice_items.count).to eq(8)
-    expect(invoice_items.first["item_id"]).to be_kind_of(Integer)
-    expect(invoice_items.first["item_id"]).to eq(@item.id)
-    expect(invoice_items.first["invoice_id"]).to be_kind_of(Integer)
-    expect(invoice_items.first["invoice_id"]).to eq(@inv.id)
-    expect(invoice_items.first["id"]).to be_kind_of(Integer)
+    expect(invoice_items["data"].count).to eq(8)
+    expect(invoice_items["data"].first["attributes"]["item_id"]).to be_kind_of(Integer)
+    expect(invoice_items["data"].first["attributes"]["item_id"]).to eq(@item.id)
+    expect(invoice_items["data"].first["attributes"]["invoice_id"]).to be_kind_of(Integer)
+    expect(invoice_items["data"].first["attributes"]["invoice_id"]).to eq(@inv.id)
+    expect(invoice_items["data"].first["attributes"]["id"]).to be_kind_of(Integer)
   end
 
   it "returns index of invoices" do
@@ -44,12 +44,12 @@ describe "Invoice Itmes API" do
 
     invoice_item = JSON.parse(response.body)
 
-    expect(invoice_item["id"]).to eq(@id)
-    expect(invoice_item["invoice_id"]).to be_kind_of(Integer)
-    expect(invoice_item["invoice_id"]).to eq(@inv.id)
-    expect(invoice_item["item_id"]).to be_kind_of(Integer)
-    expect(invoice_item["item_id"]).to eq(@item.id)
-    expect(invoice_item["id"]).to be_kind_of(Integer)
+    expect(invoice_item["data"]["attributes"]["id"]).to eq(@id)
+    expect(invoice_item["data"]["attributes"]["invoice_id"]).to be_kind_of(Integer)
+    expect(invoice_item["data"]["attributes"]["invoice_id"]).to eq(@inv.id)
+    expect(invoice_item["data"]["attributes"]["item_id"]).to be_kind_of(Integer)
+    expect(invoice_item["data"]["attributes"]["item_id"]).to eq(@item.id)
+    expect(invoice_item["data"]["attributes"]["id"]).to be_kind_of(Integer)
   end
 
   it "can find a random invoice item" do
