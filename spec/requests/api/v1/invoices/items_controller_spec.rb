@@ -4,11 +4,18 @@ describe "Items Search Controller" do
   before :each do
     @merch1 = create(:merchant)
     @merch2 = create(:merchant)
+    @merch3 = create(:merchant)
+
     @cust1 = create(:customer)
     @cust2 = create(:customer)
 
     @inv1 = create(:invoice, merchant: @merch1, customer: @cust1)
     @inv2 = create(:invoice, merchant: @merch1, customer: @cust1)
+    @inv3 = create(:invoice, merchant: @merch1, customer: @cust1)
+    @inv4 = create(:invoice, merchant: @merch1, customer: @cust1)
+    @inv5 = create(:invoice, merchant: @merch2, customer: @cust1)
+    @inv6 = create(:invoice, merchant: @merch2, customer: @cust1)
+    @inv7 = create(:invoice, merchant: @merch3, customer: @cust1)
 
     @item1 = create(:item, merchant: @merch1)
     @item2 = create(:item, merchant: @merch1)
