@@ -34,27 +34,26 @@ RSpec.describe Merchant, type: :model do
       @inv5 = create(:invoice, merchant: @merch3, customer: @cust1)
       @inv6 = create(:invoice, merchant: @merch3, customer: @cust2)
 
-      @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
-      @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
-      @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
-      @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
-      @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
-      @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
-      @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
-      @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
-      @invitems = create(:invoice_items, invoice: @inv1, merchant: @merch1)
+      @invitems = create(:invoice_item, invoice: @inv1, item: @item1)
+      @invitems = create(:invoice_item, invoice: @inv1, item: @item1)
+      @invitems = create(:invoice_item, invoice: @inv1, item: @item1)
+      @invitems = create(:invoice_item, invoice: @inv1, item: @item1)
+      @invitems = create(:invoice_item, invoice: @inv1, item: @item2)
+      @invitems = create(:invoice_item, invoice: @inv1, item: @item2)
+      @invitems = create(:invoice_item, invoice: @inv1, item: @item2)
+      @invitems = create(:invoice_item, invoice: @inv1, item: @item3)
+      @invitems = create(:invoice_item, invoice: @inv1, item: @item3)
 
-
-      @tran1 = create(:transaction, invoice: @invoice1)
-      @tran2 = create(:transaction, invoice: @invoice2)
-      @tran3 = create(:transaction, invoice: @invoice3)
-      @tran4 = create(:transaction, invoice: @invoice4)
-      @tran5 = create(:transaction, invoice: @invoice5)
+      @tran1 = create(:transaction, invoice: @inv1)
+      @tran2 = create(:transaction, invoice: @inv2)
+      @tran3 = create(:transaction, invoice: @inv3)
+      @tran4 = create(:transaction, invoice: @inv4)
+      @tran5 = create(:transaction, invoice: @inv5)
     end
 
     it ".total_revenue(quanity)" do
       quantity = 3
-      expect(Merchant.total_revenue(quantity)).to eq([@merch4, @merch3, @merch2])
+      expect(Merchant.total_revenue(quantity)).to eq([@merch1, @merch2, @merch3])
     end
 
   end
