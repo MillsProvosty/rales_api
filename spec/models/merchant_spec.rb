@@ -51,5 +51,11 @@ RSpec.describe Merchant, type: :model do
       @tran4 = create(:transaction, invoice: @invoice4)
       @tran5 = create(:transaction, invoice: @invoice5)
     end
+
+    it ".total_revenue(quanity)" do
+      quantity = 3
+      expect(Merchant.total_revenue(quantity)).to eq([@merch4, @merch3, @merch2])
+    end
+
   end
 end
