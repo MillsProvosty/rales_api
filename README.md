@@ -1,6 +1,4 @@
 # RalesApi
-![Image of Schema]
-(https://ondras.zarovi.cz/sql/demo/)
 
 
 Schema:
