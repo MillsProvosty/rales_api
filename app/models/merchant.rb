@@ -19,9 +19,14 @@ class Merchant < ApplicationRecord
       .limit(quantity)
   end
 
-  def total_revenue
-    invoices.joins(:transactions, :invoice_items)
-    .where("transactions.result = ?", "success")
-    .sum("invoice_items.quantity * invoice_items.unit_price")
+  def favorite_customer
+    cust = Customer.joins(invoices: [:transactions])
+      .where("transactions.result = ?", "success")
+      .select("customers.*, count(transactions.id) as sales")
+      .group(:id)
+      .order("sales desc")
+      .limit(1)
+
+      cust.to_a.shift
   end
 end
