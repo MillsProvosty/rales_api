@@ -87,5 +87,63 @@ RSpec.describe Merchant, type: :model do
        expect(Merchant.most_items(quantity)).to eq([@merch3, @merch1, @merch2])
     end
 
+    describe "Instance Methods" do
+      before :each do
+        @merch11 = create(:merchant, name: "Doris")
+
+        @item1 = create(:item, merchant: @merch11, unit_price: 1)
+        @item2 = create(:item, merchant: @merch11, unit_price: 2)
+        @item3 = create(:item, merchant: @merch11, unit_price: 3)
+        @item4 = create(:item, merchant: @merch11, unit_price: 4)
+        @item5 = create(:item, merchant: @merch11, unit_price: 5)
+
+        @cust11 = create(:customer, first_name: "Squee", last_name: "Morris")
+        @cust21 = create(:customer, first_name: "Blarth", last_name: "Freeber")
+
+        @inv1 = create(:invoice, merchant: @merch11, customer: @cust11)
+        @inv2 = create(:invoice, merchant: @merch11, customer: @cust11)
+        @inv3 = create(:invoice, merchant: @merch11, customer: @cust11)
+        @inv4 = create(:invoice, merchant: @merch11, customer: @cust11)
+        @inv5 = create(:invoice, merchant: @merch11, customer: @cust11)
+        @inv6 = create(:invoice, merchant: @merch11, customer: @cust11)
+        @inv7 = create(:invoice, merchant: @merch11, customer: @cust11)
+        @inv8 = create(:invoice, merchant: @merch11, customer: @cust11)
+        @inv9 = create(:invoice, merchant: @merch11, customer: @cust11)
+        @inv10 = create(:invoice, merchant: @merch11, customer: @cust21)
+        @inv11 = create(:invoice, merchant: @merch11, customer: @cust21)
+        @inv12 = create(:invoice, merchant: @merch11, customer: @cust21)
+
+        @invitems1 = create(:invoice_item, invoice: @inv1, item: @item1, quantity: 1)
+        @invitems2 = create(:invoice_item, invoice: @inv2, item: @item2, quantity: 2)
+        @invitems3 = create(:invoice_item, invoice: @inv3, item: @item3, quantity: 3)
+        @invitems4 = create(:invoice_item, invoice: @inv4, item: @item4, quantity: 4)
+        @invitems5 = create(:invoice_item, invoice: @inv5, item: @item5, quantity: 5)
+        @invitems6 = create(:invoice_item, invoice: @inv6, item: @item6, quantity: 6)
+        @invitems7 = create(:invoice_item, invoice: @inv7, item: @item7, quantity: 7)
+        @invitems8 = create(:invoice_item, invoice: @inv8, item: @item8, quantity: 8)
+        @invitems9 = create(:invoice_item, invoice: @inv9, item: @item9, quantity: 9)
+        @invitems10 = create(:invoice_item, invoice: @inv10, item: @item10, quantity: 1)
+        @invitems11 = create(:invoice_item, invoice: @inv11, item: @item9, quantity: 2)
+        @invitems12 = create(:invoice_item, invoice: @inv12, item: @item8, quantity: 3)
+
+
+        @tran1 = create(:transaction, invoice: @inv1, result: "success")
+        @tran2 = create(:transaction, invoice: @inv2, result: "success")
+        @tran3 = create(:transaction, invoice: @inv3, result: "success")
+        @tran4 = create(:transaction, invoice: @inv4, result: "success")
+        @tran5 = create(:transaction, invoice: @inv5, result: "success")
+        @tran6 = create(:transaction, invoice: @inv6, result: "failed")
+        @tran7 = create(:transaction, invoice: @inv7, result: "success")
+        @tran8 = create(:transaction, invoice: @inv8, result: "failed")
+        @tran9 = create(:transaction, invoice: @inv9, result: "success")
+        @tran10 = create(:transaction, invoice: @inv10, result: "failed")
+        @tran11 = create(:transaction, invoice: @inv11, result: "success")
+        @tran12 = create(:transaction, invoice: @inv12, result: "failed")
+
+      end
+      it "#favorite_customer" do
+        expect(@merch11.favorite_customer).to eq(@cust11)
+      end 
+    end
   end
 end
