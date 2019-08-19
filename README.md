@@ -88,7 +88,7 @@ Where `resources` is the record type requested.
 
 For each of the record types, the application also implements an endpoint to retrieve a single record based on the ID of the record. This can be accessed from URLs matching the following pattern:
 ```
-localhost:3000/api/v1/resources/id
+localhost:3000/api/v1/resources/:id
 ```
 
 Where `id` represents the unique ID for a specific resource.
@@ -113,7 +113,7 @@ Additionally, the application can find all records for a provided criteria. This
 localhost:3000/api/v1/resources/find_all?field=value
 ```
 
-The available fields vary for each resource type. A comprehensive list of search fields can be found below, and all matches are `case insensitive`:
+The available fields vary for each resource type. A comprehensive list of search fields can be found below:
 
 Customers:
 - id
@@ -161,39 +161,3 @@ Invoice_items:
 - quantity
 - created_at
 - updated_at
-
-##### Resource Relationships
-
-The application also provides a series of endpoints to return the related resources for a given resource. All relationship endpoints can be accessed at URLs matching the following pattern:
-
-```
-localhost:3000/api/v1/resources/id/related_resource
-```
-
-The available relationships can be found below:
-
-Customers:
-- Invoices
-- Transactions
-
-Merchants:
-- Items
-- Invoices
-
-Items:
-- Invoice_items
-- Merchant
-
-Invoices:
-- Transactions
-- Invoice_items
-- Items
-- Customer
-- Merchant
-
-Transactions:
-- Invoice
-
-Invoice_items:
-- Invoice
-- Item
