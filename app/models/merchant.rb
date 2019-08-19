@@ -18,6 +18,16 @@ class Merchant < ApplicationRecord
       .group(:id).order("total DESC")
       .limit(quantity)
   end
+  # 
+  # def revenue_date(date_arg)
+  #   start_time = date_arg.to_datetime
+  #   end_time = date_arg.to_datetime.end_of_day
+  #
+  #   Invoice.joins(:invoice_items, :transactions)
+  #     .where("transactions.result = ?", "success")
+  #     .where("transactions.created_at between ? and ?", start_time, end_time)
+  #     .sum("invoice_items.quantity * invoice_items.unit_price")
+  # end
 
   def favorite_customer
     cust = Customer.joins(invoices: [:transactions])
